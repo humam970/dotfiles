@@ -39,7 +39,7 @@ vim.keymap.set("n", "tbb", function()
 
 	local filter = string.format("'^(%s)$'", table.concat(names, "|"))
 	local dir = "./" .. vim.fn.expand("%:h")
-	local cmd = string.format("Compile go test -v -run='^$' -bench '%s' %s", filter, dir)
+	local cmd = string.format("Compile go test -v -run='^$' -bench %s %s", filter, dir)
 	vim.cmd(cmd)
 end, opts)
 
