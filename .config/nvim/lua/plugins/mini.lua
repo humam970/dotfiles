@@ -40,36 +40,65 @@ mini_files.setup({
 	},
 })
 
-local set_focus_window_width = function()
-	local win_config = mini_files.config.windows
-	local total_width = vim.o.columns
-	win_config.width_focus = math.floor(total_width * 0.30)
+do
+	mini_files.layout = {}
+
+	local enums = { "nofocus", "preview" }
+	for i, e in ipairs(enums) do
+		mini_files.layout[e] = false
+	end
 end
 
-local set_preview_window_width = function()
-	local win_config = mini_files.config.windows
-	local total_width = vim.o.columns
-	win_config.width_preview = total_width - win_config.width_focus - 4
+local set_layout = function(opts)
+	opts = opts or {}
+
+	local layout = mini_files.layout
+
+	layout.nofocus = opts.nofocus ~= nil and opts.nofocus or layout.nofocus
+	layout.preview = opts.preview ~= nil and opts.preview or layout.preview
 end
 
-local set_max_windows = function()
-	local win_config = mini_files.config.windows
-	win_config.max_number = win_config.preview and 2 or 1
+local get_windows_opts = function()
+	local total_width = vim.o.columns
+	local layout = mini_files.layout
+
+	local R = {
+		max_number = 1,
+		preview = false,
+		width_focus = math.floor(total_width * 0.30),
+	}
+
+	if layout.nofocus then
+		R.width_nofocus = math.floor(total_width * 0.30)
+		R.max_number = R.max_number + 1
+	end
+
+	if layout.preview then
+		R.preview = true
+		R.max_number = R.max_number + 1
+
+		local used_width = R.width_focus
+		if layout.nofocus then
+			used_width = used_width + R.width_nofocus
+		end
+
+		R.width_preview = math.max(20, total_width - used_width - 6)
+	end
+
+	return R
 end
+
+-- default layout
+set_layout({ preview = true })
 
 vim.keymap.set("n", "<leader>e", function()
 	if mini_files.close() then
 		return
 	end
 
-	set_focus_window_width()
-	set_max_windows()
-
-	if mini_files.config.windows.preview then
-		set_preview_window_width()
-	end
-
-	mini_files.open()
+	mini_files.open(nil, nil, {
+		windows = get_windows_opts(),
+	})
 end)
 
 local is_entry_type = function(type)
@@ -93,6 +122,7 @@ vim.api.nvim_create_autocmd("User", {
 
 		vim.keymap.set("n", "h", function()
 			mini_files.go_out()
+			mini_files.trim_right()
 		end, { buffer = buf_id })
 
 		vim.keymap.set("n", "<CR>", function()
@@ -102,19 +132,15 @@ vim.api.nvim_create_autocmd("User", {
 		end, { buffer = buf_id })
 
 		-- toggle preview
-		-- vim.keymap.set("n", "<C-p>", function()
-		-- 	local win_config = mini_files.config.windows
-		--
-		-- 	win_config.preview = not win_config.preview
-		-- 	set_max_windows()
-		--
-		-- 	if not win_config.preview then
-		-- 		mini_files.refresh()
-		-- 	else
-		-- 		set_preview_window_width()
-		-- 		mini_files.refresh()
-		-- 	end
-		-- end, { buffer = buf_id })
+		-- don't use when layout.nofoucs is set. it's buggy and
+		-- i don't want to fix it
+		vim.keymap.set("n", "<C-p>", function()
+			mini_files.layout.preview = not mini_files.layout.preview
+
+			mini_files.refresh({
+				windows = get_windows_opts(),
+			})
+		end, { buffer = buf_id })
 	end,
 })
 
