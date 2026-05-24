@@ -1,3 +1,15 @@
+for i = 1, 9 do
+	vim.keymap.set("n", "<C-" .. i .. ">", i .. "gt")
+end
+
+vim.keymap.set("n", "<C-t>", function()
+	if #vim.api.nvim_list_tabpages() < 9 then
+		vim.cmd("tabnew")
+	end
+end)
+
+vim.keymap.set("n", "<C-q>", "<Cmd>tabclose<CR>")
+
 vim.keymap.set("n", "<leader>s", "<cmd>source ~/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "t", "<Nop>")
 
