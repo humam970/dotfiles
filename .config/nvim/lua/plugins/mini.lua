@@ -1,4 +1,3 @@
----@diagnostic disable: unused-local, unused-function
 vim.pack.add({
 	{
 		src = "https://github.com/echasnovski/mini.pairs",
@@ -44,7 +43,7 @@ do
 	mini_files.layout = {}
 
 	local enums = { "nofocus", "preview" }
-	for i, e in ipairs(enums) do
+	for _, e in ipairs(enums) do
 		mini_files.layout[e] = false
 	end
 end
@@ -65,11 +64,11 @@ local get_windows_opts = function()
 	local R = {
 		max_number = 1,
 		preview = false,
-		width_focus = math.floor(total_width * 0.30),
+		width_focus = math.floor(total_width * 0.28),
 	}
 
 	if layout.nofocus then
-		R.width_nofocus = math.floor(total_width * 0.30)
+		R.width_nofocus = math.floor(total_width * 0.28)
 		R.max_number = R.max_number + 1
 	end
 
@@ -82,7 +81,7 @@ local get_windows_opts = function()
 			used_width = used_width + R.width_nofocus
 		end
 
-		R.width_preview = math.max(20, total_width - used_width - 6)
+		R.width_preview = math.max(20, total_width - used_width - 4)
 	end
 
 	return R
@@ -96,7 +95,17 @@ vim.keymap.set("n", "<leader>e", function()
 		return
 	end
 
-	mini_files.open(nil, nil, {
+	mini_files.open(vim.api.nvim_buf_get_name(0), nil, {
+		windows = get_windows_opts(),
+	})
+end)
+
+vim.keymap.set("n", "<leader>E", function()
+	if mini_files.close() then
+		return
+	end
+
+	mini_files.open(nil, false, {
 		windows = get_windows_opts(),
 	})
 end)

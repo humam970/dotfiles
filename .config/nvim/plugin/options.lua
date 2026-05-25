@@ -4,7 +4,7 @@ vim.o.grepprg = "rg --vimgrep --smart-case --glob '!target/*' --glob '!.git/*'"
 vim.o.grepformat = "%f:%l:%c:%m"
 vim.opt.statusline = [[[%n] %<%f  %h%w%m%r%=%-14.(%l,%c%V%) %P]]
 vim.opt.mouse = ""
-vim.opt.timeoutlen = 250
+vim.opt.timeoutlen = 300
 vim.opt.inccommand = "split"
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
