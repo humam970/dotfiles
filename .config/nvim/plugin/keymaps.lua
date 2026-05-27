@@ -67,50 +67,57 @@ vim.keymap.set("n", "<C-k>", "<c-w><c-k>")
 -- vim.api.nvim_get_current_win()
 -- vim.api.nvim_get_current_tabpage()
 -- vim.api.nvim_win_get_tabpage({win})
+-- vim.api.nvim_win_get_tabpage()
+
+local nvim_tabpage_getid = function(tabnr)
+	local tabs = vim.api.nvim_list_tabpages()
+	if tabnr > 0 and tabnr <= #tabs then
+		return tabs[tabnr]
+	end
+end
 
 vim.keymap.set("n", "<C-l>", function()
-	local curr_win = vim.fn.winnr()
-	local last_win = vim.fn.winnr("$")
-	local curr_tab = vim.fn.tabpagenr()
-	local last_tab = vim.fn.tabpagenr("$")
+	local curr_winnr = vim.fn.winnr()
+	local last_winnr = vim.fn.winnr("$")
+	local curr_tabnr = vim.fn.tabpagenr()
+	local last_tabnr = vim.fn.tabpagenr("$")
 
 	-- check if should not move to next tab
-	if not ((last_win - curr_win) == 0) then
-		local next_win = curr_win + 1
+	if not ((last_winnr - curr_winnr) == 0) then
+		local next_win = curr_winnr + 1
 		local next_winid = vim.fn.win_getid(next_win)
 		vim.api.nvim_set_current_win(next_winid)
 		return
 	end
 
 	-- check if there is a next tab
-	if not ((last_tab - curr_tab) == 0) then
-		local next_tab = curr_tab + 1
-		vim.api.nvim_set_current_tabpage(next_tab)
+	if not ((last_tabnr - curr_tabnr) == 0) then
+		local next_id = nvim_tabpage_getid(curr_tabnr + 1)
+		vim.api.nvim_set_current_tabpage(next_id)
 		vim.api.nvim_set_current_win(vim.fn.win_getid(1))
 		return
 	end
 end)
 
 vim.keymap.set("n", "<C-h>", function()
-	local curr_win = vim.fn.winnr()
-	local first_win = 1
-	local curr_tab = vim.fn.tabpagenr()
-	local first_tab = 1
+	local curr_winnr = vim.fn.winnr()
+	local first_winnr = 1
+	local curr_tabnr = vim.fn.tabpagenr()
+	local first_tabnr = 1
 
 	-- check if should not move to prev tab
-	if not ((first_win - curr_win) == 0) then
-		local prev_win = curr_win - 1
+	if not ((first_winnr - curr_winnr) == 0) then
+		local prev_win = curr_winnr - 1
 		local prev_winid = vim.fn.win_getid(prev_win)
 		vim.api.nvim_set_current_win(prev_winid)
 		return
 	end
 
 	-- check if there is a prev tab
-	if not ((first_tab - curr_tab) == 0) then
-		local prev_tab = curr_tab - 1
-		vim.api.nvim_set_current_tabpage(prev_tab)
-		local last_win_within_tab = vim.fn.tabpagewinnr(prev_tab, "$")
-		vim.api.nvim_set_current_win(vim.fn.win_getid(last_win_within_tab))
+	if not ((first_tabnr - curr_tabnr) == 0) then
+		local prev_id = nvim_tabpage_getid(curr_tabnr - 1)
+		vim.api.nvim_set_current_tabpage(prev_id)
+		vim.api.nvim_set_current_win(vim.fn.win_getid(vim.fn.winnr("$")))
 		return
 	end
 end)
