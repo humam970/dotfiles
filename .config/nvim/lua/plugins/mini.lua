@@ -140,12 +140,10 @@ vim.api.nvim_create_autocmd("User", {
 			end
 		end, { buffer = buf_id })
 
-		-- toggle preview
-		-- don't use when layout.nofoucs is set. it's buggy and
-		-- i don't want to fix it
 		vim.keymap.set("n", "<C-p>", function()
 			mini_files.layout.preview = not mini_files.layout.preview
 
+			mini_files.trim_right()
 			mini_files.refresh({
 				windows = get_windows_opts(),
 			})

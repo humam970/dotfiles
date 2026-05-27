@@ -58,15 +58,62 @@ vim.keymap.set({ "n", "v", "x" }, "K", function()
 	flash_move("zb25k")
 end)
 
--- vim.keymap.set({ "n", "v", "x" }, "J", "<C-d>")
--- vim.keymap.set({ "n", "v", "x" }, "K", "<C-u>")
 vim.keymap.set({ "n", "v", "x" }, "L", "g_")
 vim.keymap.set({ "n", "v", "x" }, "H", "_")
 
 vim.keymap.set("n", "<C-j>", "<c-w><c-j>")
 vim.keymap.set("n", "<C-k>", "<c-w><c-k>")
-vim.keymap.set("n", "<C-l>", "<c-w><c-l>")
-vim.keymap.set("n", "<C-h>", "<c-w><c-h>")
+
+-- vim.api.nvim_get_current_win()
+-- vim.api.nvim_get_current_tabpage()
+-- vim.api.nvim_win_get_tabpage({win})
+
+vim.keymap.set("n", "<C-l>", function()
+	local curr_win = vim.fn.winnr()
+	local last_win = vim.fn.winnr("$")
+	local curr_tab = vim.fn.tabpagenr()
+	local last_tab = vim.fn.tabpagenr("$")
+
+	-- check if should not move to next tab
+	if not ((last_win - curr_win) == 0) then
+		local next_win = curr_win + 1
+		local next_winid = vim.fn.win_getid(next_win)
+		vim.api.nvim_set_current_win(next_winid)
+		return
+	end
+
+	-- check if there is a next tab
+	if not ((last_tab - curr_tab) == 0) then
+		local next_tab = curr_tab + 1
+		vim.api.nvim_set_current_tabpage(next_tab)
+		vim.api.nvim_set_current_win(vim.fn.win_getid(1))
+		return
+	end
+end)
+
+vim.keymap.set("n", "<C-h>", function()
+	local curr_win = vim.fn.winnr()
+	local first_win = 1
+	local curr_tab = vim.fn.tabpagenr()
+	local first_tab = 1
+
+	-- check if should not move to prev tab
+	if not ((first_win - curr_win) == 0) then
+		local prev_win = curr_win - 1
+		local prev_winid = vim.fn.win_getid(prev_win)
+		vim.api.nvim_set_current_win(prev_winid)
+		return
+	end
+
+	-- check if there is a prev tab
+	if not ((first_tab - curr_tab) == 0) then
+		local prev_tab = curr_tab - 1
+		vim.api.nvim_set_current_tabpage(prev_tab)
+		local last_win_within_tab = vim.fn.tabpagewinnr(prev_tab, "$")
+		vim.api.nvim_set_current_win(vim.fn.win_getid(last_win_within_tab))
+		return
+	end
+end)
 
 vim.keymap.set("n", "<M-,>", "<c-w>5<")
 vim.keymap.set("n", "<M-.>", "<c-w>5>")
@@ -77,7 +124,7 @@ vim.keymap.set("n", "<leader>h", ":nohl<CR>")
 vim.keymap.set({ "n", "v", "x" }, "m", "%")
 
 vim.keymap.set("n", "<leader>y", ":%y<CR>")
-vim.keymap.set("n", "gf", ":vertical botright wincmd f<CR>", { desc = "Go to file in full-height vsplit" })
+vim.keymap.set("n", "gf", ":vertical botright wincmd f<CR>")
 
 vim.keymap.set("n", "ge", function()
 	vim.diagnostic.open_float({
