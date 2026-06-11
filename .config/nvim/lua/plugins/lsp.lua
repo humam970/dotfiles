@@ -1,34 +1,29 @@
 local lsps = {
-	biome = {
-		cmd = { "biome", "lsp-proxy" },
-		root_markers = { "biome.json", "biome.jsonc", "package.json", ".git" },
-		settings = {
-			formatter = {
-				lineWidth = 120,
-				indentWidth = 4,
-			},
-		},
-	},
+	-- biome = {
+	-- 	cmd = { "biome", "lsp-proxy" },
+	-- 	root_markers = { "biome.json", "biome.jsonc", "package.json", ".git" },
+	-- 	settings = {
+	-- 		formatter = {
+	-- 			lineWidth = 120,
+	-- 			indentWidth = 4,
+	-- 		},
+	-- 	},
+	-- },
 
 	just_ls = {
 		cmd = { "just-lsp" },
 		root_markers = { "justfile", ".git" },
 	},
 
-	elixir_ls = {
-		cmd = { "/home/humam/elixir/language_server.sh" },
-		root_markers = { "mix.exs", ".git" },
-	},
-
-	pgls = {
-		cmd = { "pgls", "lsp-proxy" },
-		root_markers = { "postgres-language-server.jsonc", ".git" },
-	},
-
-	-- eslint = {
-	-- 	cmd = { "eslint-language-server", "--stdio" },
-	-- 	root_markers = { "eslint.config.js", "package.json", ".git" },
+	-- pgls = {
+	-- 	cmd = { "pgls", "lsp-proxy" },
+	-- 	root_markers = { "postgres-language-server.jsonc", ".git" },
 	-- },
+
+	tinymist = {
+		cmd = { "tinymist", "lsp" },
+		root_markers = { "intro.typ", ".git" },
+	},
 
 	clangd = {
 		cmd = { "clangd" },
@@ -70,54 +65,64 @@ local lsps = {
 	rust_ls = {
 		cmd = { "rust-analyzer" },
 		root_markers = { "Cargo.lock", "Cargo.toml", ".git" },
+
+		settings = {
+			["rust-analyzer"] = {
+				semanticHighlighting = {
+					strings = {
+						enable = false,
+					},
+				},
+			},
+		},
 	},
 
 	superhtml = {
 		cmd = { "superhtml", "lsp" },
 	},
 
-	tailwind_ls = {
-		cmd = { "tailwindcss-language-server", "--stdio" },
-		root_markers = { "tailwind.config.js", "tailwind.config.ts", "package.json", ".git" },
-		settings = {
-			tailwindCSS = {
-				classFunctions = { "cva", "cx" },
-			},
-		},
-	},
+	-- tailwind_ls = {
+	-- 	cmd = { "tailwindcss-language-server", "--stdio" },
+	-- 	root_markers = { "tailwind.config.js", "tailwind.config.ts", "package.json", ".git" },
+	-- 	settings = {
+	-- 		tailwindCSS = {
+	-- 			classFunctions = { "cva", "cx" },
+	-- 		},
+	-- 	},
+	-- },
 
-	ts_ls = {
-		cmd = { "typescript-language-server", "--stdio" },
-		root_markers = { "tsconfig.json", "package.json", ".git" },
-		settings = {
-			javascript = {
-				format = { enable = false },
-			},
-			typescript = {
-				format = { enable = false },
-			},
-		},
-	},
+	-- ts_ls = {
+	-- 	cmd = { "typescript-language-server", "--stdio" },
+	-- 	root_markers = { "tsconfig.json", "package.json", ".git" },
+	-- 	settings = {
+	-- 		javascript = {
+	-- 			format = { enable = false },
+	-- 		},
+	-- 		typescript = {
+	-- 			format = { enable = false },
+	-- 		},
+	-- 	},
+	-- },
 
 	yaml_ls = {
 		cmd = { "yaml-language-server", "--stdio" },
 	},
 
-	css_ls = {
-		cmd = { "vscode-css-language-server", "--stdio" },
-	},
+	-- css_ls = {
+	-- 	cmd = { "vscode-css-language-server", "--stdio" },
+	-- },
 }
 
 local filetypes_config = {
-	json = { "biome" },
 	html = { "superhtml" },
-	css = { "css_ls" },
+	-- json = { "biome" },
+	-- css = { "css_ls" },
 
-	javascript = { "ts_ls", "biome", "tailwind_ls" },
-	typescript = { "ts_ls", "biome", "tailwind_ls" },
-
-	javascriptreact = { "ts_ls", "biome", "tailwind_ls" },
-	typescriptreact = { "ts_ls", "biome", "tailwind_ls" },
+	-- javascript = { "ts_ls", "biome", "tailwind_ls" },
+	-- typescript = { "ts_ls", "biome", "tailwind_ls" },
+	--
+	-- javascriptreact = { "ts_ls", "biome", "tailwind_ls" },
+	-- typescriptreact = { "ts_ls", "biome", "tailwind_ls" },
 
 	c = { "clangd" },
 
@@ -129,13 +134,13 @@ local filetypes_config = {
 
 	go = { "gopls" },
 	gomod = { "gopls" },
-	-- elixir = { "elixir_ls" },
-
 	-- sql = { "pgls" },
 
 	lua = { "lua_ls" },
 
 	just = { "just_ls" },
+
+	typst = { "tinymist" },
 }
 
 local function create_final_config(ft_cfg, source_lsps)
@@ -177,7 +182,7 @@ end
 vim.lsp.enable(vim.tbl_keys(final_lsps))
 
 vim.diagnostic.config({
-	update_in_insert = true,
+	update_in_insert = false,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
