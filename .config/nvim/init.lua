@@ -21,9 +21,10 @@ require("plugins.comfylines")
 require("plugins.formatting")
 require("plugins.gitsigns")
 require("plugins.compile")
+require("plugins.fuzzy")
 require("plugins.mini")
-require("plugins.lsp")
 require("plugins.dap")
+require("plugins.lsp")
 
 -- autocmds
 require("autocmds")

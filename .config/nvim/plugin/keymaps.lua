@@ -10,7 +10,6 @@ end)
 
 vim.keymap.set("n", "<C-q>", "<Cmd>tabclose<CR>")
 
-vim.keymap.set("n", "<leader>s", "<cmd>source ~/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "t", "<Nop>")
 
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
@@ -21,10 +20,10 @@ vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
 
 vim.keymap.set("n", "0", "_")
 
-vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
-vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
-vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
-vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
+-- vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
+-- vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
+-- vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
+-- vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
 local function flash_move(cmd)
 	local highlight_group = "IncSearch"
@@ -127,7 +126,7 @@ vim.keymap.set("n", "<M-.>", "<c-w>5>")
 vim.keymap.set("n", "<M-t>", "<C-W>+")
 vim.keymap.set("n", "<M-s>", "<C-W>-")
 
-vim.keymap.set("n", "<leader>h", ":nohl<CR>")
+vim.keymap.set("n", "gh", ":nohl<CR>")
 vim.keymap.set({ "n", "v", "x" }, "m", "%")
 
 vim.keymap.set("n", "<leader>y", ":%y<CR>")

@@ -25,5 +25,6 @@ vim.opt.shortmess:append("sI")
 vim.opt.smoothscroll = true
 vim.opt.completeopt = "menu,menuone,fuzzy,noinsert"
 vim.opt.more = false
-vim.o.showmode = false
-vim.o.signcolumn = "yes:1"
+vim.opt.showmode = false
+vim.opt.signcolumn = "yes:1"
+vim.opt.tabpagemax = 9

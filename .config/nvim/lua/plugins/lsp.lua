@@ -185,57 +185,103 @@ vim.diagnostic.config({
 	update_in_insert = false,
 })
 
+local fzf = require("fzf-lua")
+local mappings = {
+	{
+		method = "textDocument/implementation",
+		mode = "n",
+		lhs = "gi",
+		rhs = fzf.lsp_implementations,
+	},
+	{
+		method = "textDocument/codeAction",
+		mode = { "n", "v" },
+		lhs = "ga",
+		rhs = fzf.lsp_code_actions,
+	},
+	{
+		method = "textDocument/declaration",
+		mode = "n",
+		lhs = "gD",
+		rhs = fzf.lsp_declarations,
+	},
+	{
+		method = "textDocument/definition",
+		mode = "n",
+		lhs = "gd",
+		rhs = fzf.lsp_definitions,
+	},
+	{
+		method = "textDocument/typeDefinition",
+		mode = "n",
+		lhs = "gt",
+		rhs = fzf.lsp_typedefs,
+	},
+	{
+		method = "textDocument/references",
+		mode = "n",
+		lhs = "gR",
+		rhs = fzf.lsp_references,
+	},
+	{
+		method = "textDocument/documentSymbol",
+		mode = "n",
+		lhs = "gO",
+		rhs = fzf.lsp_document_symbols,
+	},
+	{
+		method = "workspace/symbol",
+		mode = "n",
+		lhs = "gW",
+		rhs = fzf.lsp_workspace_symbols,
+	},
+	{
+		method = "textDocument/rename",
+		mode = "n",
+		lhs = "grn",
+		rhs = vim.lsp.buf.rename,
+	},
+	{
+		method = "textDocument/hover",
+		mode = "n",
+		lhs = "gk",
+		rhs = function()
+			vim.lsp.buf.hover({
+				border = "solid",
+				focusable = true,
+			})
+		end,
+	},
+	{
+		method = "textDocument/signatureHelp",
+		mode = "n",
+		lhs = "gs",
+		rhs = function()
+			vim.lsp.buf.signature_help({
+				border = "solid",
+				focusable = false,
+			})
+		end,
+	},
+}
+
+local lspgroup = vim.api.nvim_create_augroup("lspgroup", { clear = true })
+
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("lspgroup", {}),
+	group = lspgroup,
 	callback = function(args)
-		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-
-		local function set_lsp_keymap(mode, lhs, rhs, opts)
-			opts = opts or {}
-			opts.buffer = args.buf
-			vim.keymap.set(mode, lhs, rhs, opts)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if not client then
+			return
 		end
 
-		if client:supports_method("textDocument/implementation") then
-			set_lsp_keymap("n", "gi", vim.lsp.buf.implementation)
-		end
-
-		if client:supports_method("textDocument/codeAction") then
-			set_lsp_keymap({ "n", "v" }, "ga", vim.lsp.buf.code_action)
-		end
-
-		if client:supports_method("textDocument/declaration") then
-			set_lsp_keymap("n", "gD", vim.lsp.buf.declaration)
-		end
-
-		if client:supports_method("textDocument/definition") then
-			set_lsp_keymap("n", "gd", vim.lsp.buf.definition)
-		end
-
-		if client:supports_method("textDocument/typeDefinition") then
-			set_lsp_keymap("n", "gt", vim.lsp.buf.type_definition)
-		end
-
-		if client:supports_method("textDocument/references") then
-			set_lsp_keymap("n", "gR", vim.lsp.buf.references)
-		end
-
-		if client:supports_method("textDocument/hover") then
-			set_lsp_keymap("n", "gk", function()
-				vim.lsp.buf.hover({
-					border = "solid",
-					focusable = true,
+		for _, mapping in ipairs(mappings) do
+			if client:supports_method(mapping.method) then
+				vim.keymap.set(mapping.mode, mapping.lhs, mapping.rhs, {
+					buffer = args.buf,
+					silent = true,
 				})
-			end)
-		end
-
-		if client:supports_method("textDocument/signatureHelp") then
-			set_lsp_keymap("n", "gs", function()
-				vim.lsp.buf.signature_help({
-					border = "solid",
-					focusable = false,
-				})
-			end)
+			end
 		end
 	end,
 })
