@@ -1,30 +1,31 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.o.grepprg = "rg --vimgrep --smart-case --glob '!target/*' --glob '!.git/*'"
-vim.o.grepformat = "%f:%l:%c:%m"
-vim.opt.statusline = [[[%n] %<%f  %h%w%m%r%=%-14.(%l,%c%V%) %P]]
-vim.opt.mouse = ""
-vim.opt.timeoutlen = 300
-vim.opt.inccommand = "split"
-vim.opt.smartcase = true
-vim.opt.ignorecase = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.shada = { "'10", "<0", "s10", "h" }
-vim.opt.swapfile = false
 vim.opt.formatoptions:remove("o")
-vim.opt.incsearch = true
-vim.opt.wrap = false
-vim.opt.linebreak = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.termguicolors = true
-vim.opt.cursorline = true
 vim.opt.clipboard:append("unnamedplus")
 vim.opt.shortmess:append("sI")
-vim.opt.smoothscroll = true
-vim.opt.completeopt = "menu,menuone,fuzzy,noinsert"
-vim.opt.more = false
-vim.opt.showmode = false
-vim.opt.signcolumn = "yes:1"
-vim.opt.tabpagemax = 9
+vim.opt.shada = { "'10", "<0", "s10", "h" }
+
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.statusline = [[[%n] %<%f  %h%w%m%r%=%-14.(%l,%c%V%) %P]]
+vim.o.mouse = ""
+vim.o.inccommand = "split"
+vim.o.smartcase = true
+vim.o.ignorecase = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.swapfile = false
+vim.o.incsearch = true
+vim.o.wrap = false
+vim.o.linebreak = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.termguicolors = true
+vim.o.cursorline = true
+vim.o.smoothscroll = true
+vim.o.completeopt = "menu,menuone,fuzzy,noinsert"
+vim.o.more = false
+vim.o.showmode = false
+vim.o.signcolumn = "yes:1"
+vim.o.tabpagemax = 9
+
+vim.o.timeout = false
+vim.o.timeoutlen = 250

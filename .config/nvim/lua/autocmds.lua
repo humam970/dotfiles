@@ -3,7 +3,7 @@ local core_augroup = vim.api.nvim_create_augroup("core_autocmds", { clear = true
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = core_augroup,
 	callback = function()
-		vim.cmd("clearjumps")
+		vim.cmd.clearjumps()
 	end,
 })
 

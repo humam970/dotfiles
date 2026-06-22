@@ -17,4 +17,4 @@ require("everforest").setup({
 	show_eob = false,
 })
 
-vim.cmd("colorscheme everforest")
+vim.cmd.colorscheme("everforest")

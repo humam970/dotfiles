@@ -4,16 +4,16 @@ end
 
 vim.keymap.set("n", "<C-t>", function()
 	if #vim.api.nvim_list_tabpages() < 9 then
-		vim.cmd("tabnew")
+		vim.cmd.tabnew()
 	end
 end)
 
-vim.keymap.set("n", "<C-q>", "<Cmd>tabclose<CR>")
+vim.keymap.set("n", "<C-q>", vim.cmd.tabclose)
 
 vim.keymap.set("n", "t", "<Nop>")
 
-vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
-vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<M-j>", vim.cmd.cnext)
+vim.keymap.set("n", "<M-k>", vim.cmd.cprev)
 
 vim.keymap.set("n", "U", "<C-r>")
 vim.keymap.set("t", "<ESC><ESC>", "<C-\\><C-n>")
@@ -25,43 +25,22 @@ vim.keymap.set("n", "0", "_")
 -- vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
 -- vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
-local function flash_move(cmd)
-	local highlight_group = "IncSearch"
-	local timeout = 250
-
-	local bufnr = vim.api.nvim_get_current_buf()
-	local row = vim.api.nvim_win_get_cursor(0)[1] - 1
-
-	local ns_id = vim.api.nvim_create_namespace("flash_move")
-
-	vim.api.nvim_buf_set_extmark(bufnr, ns_id, row, 0, {
-		end_row = row + 1,
-		hl_group = highlight_group,
-		hl_eol = true,
-	})
-
-	vim.cmd("normal! " .. cmd)
-
-	vim.defer_fn(function()
-		if vim.api.nvim_buf_is_valid(bufnr) then
-			vim.api.nvim_buf_clear_namespace(bufnr, ns_id, 0, -1)
-		end
-	end, timeout)
-end
-
 vim.keymap.set({ "n", "v", "x" }, "J", function()
-	flash_move("zt25j")
+	vim.cmd.normal("20jzz")
 end)
-
 vim.keymap.set({ "n", "v", "x" }, "K", function()
-	flash_move("zb25k")
+	vim.cmd.normal("20kzz")
 end)
 
 vim.keymap.set({ "n", "v", "x" }, "L", "g_")
 vim.keymap.set({ "n", "v", "x" }, "H", "_")
 
-vim.keymap.set("n", "<C-j>", "<c-w><c-j>")
-vim.keymap.set("n", "<C-k>", "<c-w><c-k>")
+vim.keymap.set("n", "<C-j>", function()
+	vim.cmd.wincmd("j")
+end)
+vim.keymap.set("n", "<C-k>", function()
+	vim.cmd.wincmd("k")
+end)
 
 -- vim.api.nvim_get_current_win()
 -- vim.api.nvim_get_current_tabpage()
@@ -126,11 +105,11 @@ vim.keymap.set("n", "<M-.>", "<c-w>5>")
 vim.keymap.set("n", "<M-t>", "<C-W>+")
 vim.keymap.set("n", "<M-s>", "<C-W>-")
 
-vim.keymap.set("n", "gh", ":nohl<CR>")
+vim.keymap.set("n", "gh", vim.cmd.nohl, { silent = true })
 vim.keymap.set({ "n", "v", "x" }, "m", "%")
 
 vim.keymap.set("n", "<leader>y", ":%y<CR>")
-vim.keymap.set("n", "gf", ":vertical botright wincmd f<CR>")
+-- vim.keymap.set("n", "gf", ":vertical botright wincmd f<CR>")
 
 vim.keymap.set("n", "ge", function()
 	vim.diagnostic.open_float({
