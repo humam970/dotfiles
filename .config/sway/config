@@ -1,8 +1,14 @@
 set $mod Mod4
 
-# exec_always "--no-startup-id pidof hyprsunset >/dev/null || hyprsunset -t 3500"
-# exec_always "--no-startup-id pidof hyprpaper >/dev/null || hyprpaper"
-# exec_always "--no-startup-id pidof qs >/dev/null || qs -c noctalia-shell"
+exec swayosd-server
+exec swayidle -w \
+	timeout 300 'swaylock -f -c 000000' \
+	timeout 600 'swaymsg "output * power off"' \
+	resume 'swaymsg "output * power on"' \
+	before-sleep 'swaylock -f -c 000000'
+
+exec_always pidof wlsunset >/dev/null || wlsunset -s 00:00 -S 00:00 -t 4000
+
 
 include /etc/sway/config.d/*
 include ./opts.conf
@@ -11,4 +17,3 @@ include ./binds.conf
 include ./styles.conf
 include ./bar.conf
 include ./rules.conf
-
