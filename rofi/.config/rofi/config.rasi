@@ -1,0 +1,22 @@
+configuration {
+	modes: "drun";
+    display-drun: "";
+	show-icons: true;
+	font: "mono 14";
+
+    kb-remove-to-eol: "";
+	kb-accept-entry: "Return,KP_Enter"; 
+    kb-row-down: "Control+j";
+    kb-row-up: "Control+k";
+
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+@theme "./theme.rasi"
