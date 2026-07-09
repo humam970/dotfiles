@@ -1,0 +1,155 @@
+dms 1.4.6
+  INFO  go: Spawning quickshell with -p /nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms
+                                  
+██████╗  █████╗ ███╗   ██╗██╗  ██╗
+██╔══██╗██╔══██╗████╗  ██║██║ ██╔╝
+██║  ██║███████║██╔██╗ ██║█████╔╝ 
+██║  ██║██╔══██║██║╚██╗██║██╔═██╗ 
+██████╔╝██║  ██║██║ ╚████║██║  ██╗
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝
+  INFO  go: DMS API Server listening on: /run/user/1000/danklinux-4374.sock
+  INFO  go: API Version: 24
+  INFO  go: Protocol: JSON over Unix socket
+  INFO  go: Request format: {"id": <any>, "method": "...", "params": {...}}
+  INFO  go: Response format: {"id": <any>, "result": {...}} or {"id": <any>, "error": "..."}
+  INFO  go:
+  INFO  go: Initializing managers...
+  INFO  go:
+  INFO  go: Attempting to initialize Wayland gamma control...
+  INFO  go: Wayland gamma control initialized successfully
+  INFO  go: AppPicker manager initialized
+  INFO  go: Attempting to initialize DWL IPC...
+  INFO  go: DWL: starting registry setup
+loginctl: using XDG_SESSION_ID=1
+  INFO  go: Network backend detection: NetworkManager present. Using NM API.
+  INFO  go: DWL: Bound wl_output id=9 registry_name=68
+  INFO  go: DWL: manager not found in registry
+  WARN  go: Failed to initialize bluez manager: no bluetooth adapter found: The name is not activatable
+  WARN  go: Bluez manager unavailable: no bluetooth adapter found: The name is not activatable
+  INFO  go: ExtWorkspace capability detected and will be available on subscription
+  INFO  go: Attempting to initialize WlrOutput management...
+  INFO  go: WlrOutput: starting registry setup
+  INFO  go: WlrOutput: registry setup complete (events will be processed async)
+  INFO  go: WlrOutput management initialized successfully
+  INFO  go: Theme mode automation manager initialized
+  INFO  go:
+  INFO  go: Brightness manager initialized
+  INFO  go: Ready! Capabilities: [plugins gamma browser extworkspace wlroutput theme.auto]
+  WARN  go: Failed to initialize evdev manager: insufficient permissions to access input devices. Add your user to the 'input' group: `sudo usermod -a -G input $USER` or run `dms setup`
+  INFO  go: Attempting to initialize clipboard manager...
+  INFO  go: WlrOutput: found zwlr_output_manager_v1
+  INFO  go: WlrOutput: manager bound successfully
+  INFO  go: Sysfs backend initialized with 3 devices
+  INFO  go: Bound wl_seat
+  INFO  go: Udev monitor started for backlight/drm/i2c events
+  INFO  go: Bound ext_data_control_manager_v1
+  INFO  go: Logind backend initialized - will use for brightness control
+  INFO  go: DBus manager initialized
+  INFO  go: Claimed org.freedesktop.ScreenSaver on session bus
+  INFO  go: Claimed org.gnome.ScreenSaver on session bus
+  INFO  go: Screensaver listener initialized
+  INFO  go: Freedesktop manager initialized
+  INFO  go: Loginctl manager initialized
+  INFO  go: [SecretAgent] Registered with NetworkManager (id=com.danklinux.NMAgent, unique name=:1.53, fixed path=/org/freedesktop/NetworkManager/SecretAgent)
+  INFO  go: Network manager initialized
+[32m  INFO[0m: Launching config: "/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/shell.qml"
+[32m  INFO[0m: Shell ID: "effea448f41f3f2fe7734efeb6b25814" Path ID "effea448f41f3f2fe7734efeb6b25814"
+[32m  INFO[0m: Saving logs to "/run/user/1000/quickshell/by-id/td3a9guht/log.qslog"
+  INFO  go: Data device setup complete
+  INFO  go: Clipboard manager initialized successfully
+  INFO  go: Wayland event dispatcher started
+[32m  INFO[97m qml[0m: BlurService: Quickshell blur support available
+[32m  INFO[97m qml[0m: CompositorService: Detected Hyprland
+[32m  INFO[97m qml[0m: NetworkService: Initializing...
+[32m  INFO[97m qml[0m: PolkitService: Initialized successfully
+[32m  INFO[97m qml[0m: IdleService: Initialized with idle monitoring support
+[32m  INFO[97m qml[0m: AudioService: Sound effects enabled
+[33m  WARN[97m quickshell.dbus.objectmanager[0m: Failed to create DBusObjectManagerInterface for "org.bluez" "/" : QDBusError("", "")
+[33m  WARN[97m quickshell.I3.ipc[0m: $I3SOCK is unset. Trying $SWAYSOCK.
+[33m  WARN[97m quickshell.I3.ipc[0m: $SWAYSOCK and I3SOCK are unset. Cannot connect to socket.
+[33m  WARN[97m quickshell.service.notifications[0m: Could not register notification server at org.freedesktop.Notifications, presumably because one is already registered.
+[33m  WARN[97m quickshell.service.notifications[0m: Registration will be attempted again if the active service is unregistered.
+[32m  INFO[0m: Configuration Loaded
+[32m  INFO[97m qt.multimedia.ffmpeg[0m: Using Qt multimedia with FFmpeg version 8.1.1 GPL version 3 or later
+[33m  WARN[0m: spaVisitChoice: parse error "Object: size 136, type Spa:Pod:Object:Param:Format (262147), id Spa:Enum:ParamId:EnumFormat (3)" "  Prop: key Spa:Pod:Object:Param:Format:mediaType (1), flags 00000000" "    Id 1        (Spa:Enum:MediaType:audio)" "  Prop: key Spa:Pod:Object:Param:Format:mediaSubtype (2), flags 00000000" "    Id 3        (Spa:Enum:MediaSubtype:iec958)" "  Prop: key Spa:Pod:Object:Param:Format:Audio:iec958Codec (65542), flags 00000000" "    Choice: type Spa:Enum:Choice:Enum, flags 00000000 24 4" "      Id 1        (Spa:Enum:AudioIEC958Codec:PCM)" "      Id 1        (Spa:Enum:AudioIEC958Codec:PCM)" "  Prop: key Spa:Pod:Object:Param:Format:Audio:rate (65539), flags 00000000" "    Choice: type Spa:Enum:Choice:None, flags 00000000 20 4" "      Int 48000"
+[33m  WARN[97m scene[0m: QML FileView at @Common/SettingsData.qml[2677:5]: Read of /home/humam/.config/DankMaterialShell/settings.json failed: File does not exist.
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/freedesktop/audio-volume-change.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+[33m  WARN[97m scene[0m: QML FileView at @Common/SessionData.qml[1184:5]: Read of /home/humam/.local/state/DankMaterialShell/session.json failed: File does not exist.
+  Duration: 00:00:00.06, bitrate: 1420 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+[33m  WARN[97m qml[0m: I18n: Falling back to built-in English strings
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/freedesktop/message.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:00.31, bitrate: 1413 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+[33m  WARN[97m quickshell.dbus[0m: Could not launch service org.freedesktop.UPower: QDBusError(org.freedesktop.DBus.Error.ServiceUnknown, The name is not activatable)
+[33m  WARN[97m quickshell.service.upower[0m: Could not start UPower. The UPower service will not work.
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/freedesktop/message-new-instant.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:01.03, bitrate: 1411 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/plasma/power-unplug.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:03.00, bitrate: 1411 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/plasma/power-plug.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:03.00, bitrate: 1411 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+[33m  WARN[97m qt.qpa.services[0m: Failed to register with host portal QDBusError("org.freedesktop.portal.Error.Failed", "Could not register app ID: Connection already associated with an application ID")
+[32m  INFO[97m qml[0m: BlurService: Compositor does not support ext-background-effect-v1
+[32m  INFO[97m qml[0m: Detected distribution: NixOS 26.05 (Yarara)
+[32m  INFO[97m qml[0m: Theme: Setting desired theme - hex mode: dark (stock colors)
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/freedesktop/audio-volume-change.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:00.06, bitrate: 1420 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/freedesktop/message.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:00.31, bitrate: 1413 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+[32m  INFO[97m qml[0m: NetworkService: Network capability detected, using DMSNetworkService
+[32m  INFO[97m qml[0m: NetworkService: Switched to DMSNetworkService, networkAvailable: true
+[32m  INFO[97m qml[0m: DMSService: Connected (API v24, CLI 1.4.6) - ["plugins","network","loginctl","freedesktop","gamma","browser","extworkspace","brightness","wlroutput","clipboard","theme.auto","dbus"]
+[32m  INFO[97m qml[0m: WlrOutputService: wlr-output-management capability detected
+[32m  INFO[97m qml[0m: ExtWorkspaceService: ext-workspace available but compositor has native support
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/freedesktop/message-new-instant.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:01.03, bitrate: 1411 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+  INFO  go: Processing theme: hex #D0BCFF (dark)
+  INFO  go: Building theme: hex #D0BCFF (dark)
+  INFO  go: Using stock/custom theme colors with matugen base
+  INFO  go: Running matugen color hex with stock color overrides
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/plasma/power-unplug.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:03.00, bitrate: 1411 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+Input #0, wav, from '/nix/store/ra4ma5rklbz224475jmiafmdm4hpg73h-dms-shell-1.4.6/share/quickshell/dms/assets/sounds/plasma/power-plug.wav':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Duration: 00:00:03.00, bitrate: 1411 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 44100 Hz, 2 channels, s16, 1411 kb/s
+[32m  INFO[97m qml[0m: HyprlandService: Generated layout config at /home/humam/.config/hypr/dms/layout.conf
+  INFO  go: No color changes detected, skipping refresh
+[32m  INFO[97m qml[0m: Theme worker: Theme generation completed
+[32m  INFO[97m qml[0m: Theme: Matugen worker completed successfully
+[32m  INFO[97m qml[0m: CompositorService: Detected Hyprland
+[32m  INFO[97m qml[0m: HyprlandService: Generated layout config at /home/humam/.config/hypr/dms/layout.conf
+[32m  INFO[97m qml[0m: SessionService: Native inhibitor available: true
+  INFO  go: DDC backend initialized
+[33m  WARN[97m quickshell.io.socket[0m: Socket error for Socket(0x7165eb58d240) QLocalSocket::PeerClosedError
+[32m  INFO[97m qml[0m: ExtWorkspaceService: ext-workspace available but compositor has native support
+[33m  WARN[97m quickshell.io.socket[0m: Socket error for Socket(0x7165eb58d4c0) QLocalSocket::PeerClosedError
+[33m  WARN[97m quickshell.io.socket[0m: Socket error for Socket(0x7165eb58d240) QLocalSocket::ConnectionRefusedError
+[33m  WARN[97m quickshell.io.socket[0m: Socket error for Socket(0x7165eb58d4c0) QLocalSocket::ConnectionRefusedError

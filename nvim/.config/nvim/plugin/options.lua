@@ -22,8 +22,6 @@ vim.opt.expandtab = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
 
 vim.o.inccommand = "split"
 vim.o.incsearch = true
@@ -39,5 +37,5 @@ vim.o.showmode = false
 vim.o.signcolumn = "yes:1"
 vim.o.tabpagemax = 9
 
-vim.o.timeout = false
-vim.o.timeoutlen = 250
+vim.o.timeout = true
+vim.o.timeoutlen = 275

@@ -1,5 +1,3 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
-
 # # Format man pages
 # set -x MANROFFOPT "-c"
 # set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -46,3 +44,4 @@ alias hx helix
 set -g fish_greeting ""
 
 fish_vi_key_bindings
+# fish_helix_key_bindings

@@ -1,56 +1,32 @@
-# Font Configuration
-font-size    = 13
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
-font-family  = "Liberation Mono Nerd Font"
+theme = Kanagawa Wave
 
-# Window Configuration
-window-decoration = false
-# window-padding-x = 12
-# window-padding-y = 12
-background-opacity = 1.0
-# background-blur-radius = 32
+background                 = #000000
 
-# Cursor Configuration
-cursor-style = block
-# cursor-style-blink = true
+shell-integration-features = no-cursor
 
-# Scrollback
-scrollback-limit = 3023
+cursor-style               = block
+cursor-style-blink         = false
 
-# Terminal features
+font-size                  = 13
+font-feature               = -calt
+font-feature               = -liga
+font-feature               = -dlig
+font-family                = "Liberation Mono Nerd Font"
+
+window-padding-x           = 0
+window-padding-y           = 0
+window-decoration          = false
+window-theme               = ghostty
+window-padding-balance     = true
+
+gtk-single-instance        = true
+gtk-tabs-location          = bottom
+gtk-wide-tabs              = false
+
+keybind                    = ctrl+enter=unbind
+keybind                    = ctrl+shift+enter=unbind
+
 mouse-hide-while-typing = true
 copy-on-select = false
 confirm-close-surface = false
 
-# Disable annoying copied to clipboard
-app-notifications = no-clipboard-copy,no-config-reload
-
-# Key bindings for common actions
-#keybind = ctrl+c=copy_to_clipboard
-#keybind = ctrl+v=paste_from_clipboard
-# keybind = ctrl+shift+n=new_window
-# keybind = ctrl+t=new_tab
-# keybind = ctrl+plus=increase_font_size:1
-keybind = ctrl+minus=decrease_font_size:1
-keybind = ctrl+zero=reset_font_size
-
-# Material 3 UI elements
-unfocused-split-opacity = 0.7
-unfocused-split-fill = #44464f
-
-# Tab configuration
-gtk-titlebar = false
-
-# Shell integration
-shell-integration = detect
-shell-integration-features = cursor,sudo,title,no-cursor
-keybind = shift+enter=text:\n
-
-# Rando stuff
-gtk-single-instance = true
-
-# Dank color generation
-# theme = dankcolors
-theme = Kanagawa Wave

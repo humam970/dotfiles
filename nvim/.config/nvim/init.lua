@@ -1,8 +1,6 @@
 vim.g.editorconfig = false
 vim.g.mapleader = " "
 
--- vim.cmd.syntax("off")
-
 vim.filetype.add({
 	extension = {
 		env = "dosini",
