@@ -17,8 +17,8 @@
       inherit system;
       humam = lib.nixosSystem {
         modules = [
-          ./configuration.nix
-        ];
+			./configuration.nix
+		];
       };
     };
   };

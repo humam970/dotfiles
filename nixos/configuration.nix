@@ -3,7 +3,7 @@
 {
   imports =
     [
-      /etc/hardware-configuration.nix
+      ./hardware/home-machine.nix
     ];
 
 	nix.settings.experimental-features = [
