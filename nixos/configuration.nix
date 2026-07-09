@@ -57,7 +57,6 @@
 		portalPackage    = pkgs.xdg-desktop-portal-hyprland;
 	};
 	programs.hyprlock.enable  = true;
-	programs.hyprpaper.enable = true;
 	services.hypridle.enable  = true;
 	security.polkit.enable    = true;
 
@@ -75,6 +74,7 @@
 
 	environment.systemPackages = with pkgs; [
 		# Extra packages
+		hyprpaper
 		bibata-cursors
 		ashell
 		mako
