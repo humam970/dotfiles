@@ -101,6 +101,7 @@ local start_once = function()
 
 	exec_once("hyprsunset", "hyprsunset")
 	exec_once("hyprpaper", "hyprpaper")
+	exec_once("ashell", "ashell")
 	exec_once("qs", "qs -c noctalia-shell")
 end
 
