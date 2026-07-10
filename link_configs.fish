@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set dotfiles ~/dotfiles
+set dotfiles ~/.dotfiles
 set ignore .git scripts nixos
 
 cd $dotfiles
