@@ -38,8 +38,8 @@ hl.config({
 
 		blur = {
 			enabled = true,
-			size    = 1,
-			passes  = 1,
+			size = 1,
+			passes = 1,
 		},
 
 		shadow = {
@@ -94,27 +94,7 @@ hl.gesture({
 	mods = "SUPER",
 })
 
-local start_once = function()
-	local exec_once = function(pname, run_cmd)
-		local cmd = "pidof " .. pname .. " >/dev/null || " .. run_cmd
-		hl.exec_cmd(cmd)
-	end
-
-	exec_once("hyprsunset", "hyprsunset")
-	exec_once("hyprpaper", "hyprpaper")
-	exec_once("ashell", "ashell")
-	exec_once("qs", "qs -c noctalia-shell")
-end
-
-hl.on("hyprland.start", function()
-	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-	start_once()
-end)
-
-hl.on("config.reloaded", function()
-	start_once()
-end)
-
+require("auto")
 require("apps")
 require("binds")
 require("rules")

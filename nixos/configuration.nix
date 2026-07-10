@@ -67,6 +67,7 @@
 		rustup
 
 		lua-language-server
+		stylua
 
 		alejandra
 	];
