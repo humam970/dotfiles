@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ self, config, pkgs, ... }:
 
 {
   imports =
@@ -33,6 +33,7 @@
 		stow
 		openvpn3
 		eza
+		self.packages.${pkgs.system}.doot
 
 		# Utility Packages
 		pwvucontrol
