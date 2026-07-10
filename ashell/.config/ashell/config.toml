@@ -1,0 +1,27 @@
+enable_esc_key = true
+position       = "Bottom"
+layer          = "Top"
+
+[osd]
+enabled                    = true
+timeout                    = 1500
+show_volume_percentage     = true
+show_brightness_percentage = true
+
+
+[modules]
+left   = [ "Workspaces" ]
+center = [ "Tempo" ]
+right  = [ [ "Privacy", "Settings", "Notifications" ] ]
+
+# [notifications]
+# format = "%m/%d %H:%M"
+# show_timestamps = true
+# show_bodies = false
+# grouped = true
+# toast = true
+# toast_position = "top_right"
+# toast_timeout = 4000
+# toast_limit = 5
+# toast_max_height = 150
+# blocklist = ["blueman", "^org\\.gnome\\."]

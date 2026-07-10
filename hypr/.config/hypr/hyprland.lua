@@ -3,7 +3,6 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_SIZE", "24")
 
-
 hl.monitor({
 	output = "eDP-1",
 	mode = "1920x1080@60",
@@ -38,7 +37,9 @@ hl.config({
 		border_part_of_window = false,
 
 		blur = {
-			enabled = false,
+			enabled = true,
+			size    = 1,
+			passes  = 1,
 		},
 
 		shadow = {

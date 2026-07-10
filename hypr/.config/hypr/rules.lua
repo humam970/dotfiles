@@ -16,3 +16,10 @@ hl.window_rule({
 	},
 	workspace = 10,
 })
+
+hl.window_rule({
+	enabled = true,
+	match = {
+		class = "com.mitchellh.ghostty",
+	},
+})

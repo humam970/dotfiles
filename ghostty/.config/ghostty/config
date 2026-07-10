@@ -1,13 +1,15 @@
 theme = Kanagawa Wave
 
 background                 = #000000
+background-opacity         = 0.4
+background-opacity-cells   = true
 
 shell-integration-features = no-cursor
 
 cursor-style               = block
 cursor-style-blink         = false
 
-font-size                  = 13
+font-size                  = 14
 font-feature               = -calt
 font-feature               = -liga
 font-feature               = -dlig
@@ -27,6 +29,6 @@ keybind                    = ctrl+enter=unbind
 keybind                    = ctrl+shift+enter=unbind
 
 mouse-hide-while-typing = true
-copy-on-select = false
-confirm-close-surface = false
+copy-on-select          = false
+confirm-close-surface   = false
 
