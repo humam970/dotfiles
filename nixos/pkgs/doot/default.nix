@@ -12,11 +12,11 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "pol-rivero";
     repo = "doot";
-    rev = "v${version}";
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    rev = version;
+    hash = lib.fakeHash;
   };
 
-  vendorHash = "sha256-9h1EeNREmumRsaNHjD+NHkQtApiZuQZW/xj9lfRcQtE=";
+  vendorHash = lib.fakeHash;
 
   meta = with lib; {
     description = "Dotfiles manager";
