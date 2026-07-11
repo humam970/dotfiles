@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 {
-	programs.fish.enable = true;
 	users.users."humam" = {
 		isNormalUser = true;
 		shell        = pkgs.fish;

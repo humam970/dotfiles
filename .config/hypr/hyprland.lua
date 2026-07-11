@@ -38,8 +38,8 @@ hl.config({
 
 		blur = {
 			enabled = true,
-			size = 1,
-			passes = 1,
+			size = 8,
+			passes = 4,
 		},
 
 		shadow = {
@@ -54,8 +54,8 @@ hl.config({
 	input = {
 		kb_layout = "us,ara",
 		kb_options = "ctrl:swapcaps,grp:alt_shift_toggle",
-		repeat_rate = 50,
-		repeat_delay = 200,
+		repeat_rate = 125,
+		repeat_delay = 250,
 
 		follow_mouse = 1,
 

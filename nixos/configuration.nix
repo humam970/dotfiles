@@ -1,4 +1,4 @@
-{ self, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -14,8 +14,11 @@
 	time.timeZone = "Asia/Baghdad";
 	i18n.defaultLocale = "en_US.UTF-8";
 
+	programs.fish.enable = true;
+
 	environment.systemPackages = with pkgs; [
 		# Extra Packages
+		fishPlugins.pure
 		bibata-cursors
 		fastfetch
 		ashell
@@ -30,10 +33,8 @@
 		skim
 		zellij
 		git
-		stow
 		openvpn3
 		eza
-		self.packages.${pkgs.system}.doot
 
 		# Utility Packages
 		pwvucontrol

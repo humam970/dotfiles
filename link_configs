@@ -1,0 +1,20 @@
+#!/usr/bin/env fish
+
+set ignore .git .gitignore scripts link_configs nixos
+
+set config_dest ~/.config
+
+for dir in ~/dotfiles/.config/* ~/dotfiles/.config/.*
+    set pkg (path basename (string trim -r -c / $dir))
+
+    if contains -- $pkg $ignore
+        continue
+    end
+
+    set dest "$config_dest/$pkg"
+
+    test -e "$dest"; and rm -rf -- "$dest"
+
+    echo "Linking $pkg"
+    ln -s "$dir" "$dest"
+end
