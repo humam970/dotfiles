@@ -9,5 +9,6 @@
 		./services.nix
 		./hyprland.nix
 		./virtualization.nix
+		./services
 	];	
 }

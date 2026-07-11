@@ -4,7 +4,6 @@
   imports =
     [
 		./modules
-		./services/battery.nix
     ];
 
 	nix.settings.experimental-features = [
