@@ -1,7 +1,7 @@
 local apps = {
 	"hyprsunset",
 	"hyprpaper",
-	"ashell",
+	"swayosd-server",
 }
 
 local function start_apps()

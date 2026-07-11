@@ -1,45 +1,50 @@
 group-by=app-name
 layer=overlay
 anchor=top-right
-max-visible=5
+max-visible=4
 
-font=Inter 11
+font=Liberation Mono Nerd Font 11
 markup=1
 
-width=420
-height=100
-outer-margin=20
-padding=16
-margin=12
-border-size=1
-border-radius=14
+width=380
+height=90
+
+outer-margin=18
+padding=14
+margin=10
+
+border-size=2
+border-radius=12
 
 icons=1
-max-icon-size=48
 icon-location=left
+max-icon-size=40
 icon-border-radius=10
+
+on-button-left=dismiss
 
 default-timeout=5000
 ignore-timeout=1
+
 history=1
 max-history=10
 sort=-time
 
-format=<b>%s</b>\n%b
+format=<span weight="bold">%s</span>\n<span alpha="85%%">%b</span>
 
-background-color=#2E3440FF
-text-color=#ECEFF4FF
-border-color=#88C0D0FF
-progress-color=over #88C0D0FF
+background-color=#18181BF2
+text-color=#FAFAFA
+border-color=#60A5FA
+progress-color=over #3B82F6
 
 [urgency=critical]
-background-color=#4C566AFF
-text-color=#ECEFF4FF
-border-color=#BF616AFF
+background-color=#232326F2
+text-color=#FFFFFF
+border-color=#EF4444
 default-timeout=0
 
 [grouped]
-format=(%g) <b>%s</b>\n%b
+format=<span weight="bold">(%g) %s</span>\n%b
 
 [hidden]
-format=󰇚 %h more notifications
+format=<span alpha="70%%">󰇚 %h more notifications</span>

@@ -108,25 +108,18 @@ local binds = {
 		fn = window.center,
 		args = { action = "toggle" },
 	},
-	{
-		key = "SUPER + M",
-		fn = dsp.exec_cmd,
-		args = "ashell msg toggle-visibility",
-	},
 
 	-- Brightness Binds
 	{
 		key = "XF86MonBrightnessUp",
 		fn = dsp.exec_cmd,
-		args = "ashell msg brightness-up",
-		-- args = "brightnessctl set 5%+",
+		args = "swayosd-client --brightness +5",
 		flags = { locked = true, repeating = true },
 	},
 	{
 		key = "XF86MonBrightnessDown",
 		fn = dsp.exec_cmd,
-		args = "ashell msg brightness-down",
-		-- args = "brightnessctl set 5%-",
+		args = "swayosd-client --brightness -5",
 		flags = { locked = true, repeating = true },
 	},
 
@@ -134,31 +127,28 @@ local binds = {
 	{
 		key = "XF86AudioRaiseVolume",
 		fn = dsp.exec_cmd,
-		args = "ashell msg volume-up",
-		-- args = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+		args = "swayosd-client --output-volume +5",
 		flags = { locked = true, repeating = true },
 	},
 	{
 		key = "XF86AudioLowerVolume",
 		fn = dsp.exec_cmd,
-		args = "ashell msg volume-down",
-		-- args = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+		args = "swayosd-client --output-volume -5",
 		flags = { locked = true, repeating = true },
 	},
 	{
 		key = "XF86AudioMute",
 		fn = dsp.exec_cmd,
-		args = "ashell msg volume-toggle-mute",
-		-- args = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-		flags = { repeating = true },
+		args = "swayosd-client --output-volume mute-toggle",
+		flags = { locked = true },
 	},
 
 	-- Microphone Binds
 	{
 		key = "XF86AudioMicMute",
 		fn = dsp.exec_cmd,
-		args = "ashell msg microphone-toggle-mute",
-		flags = { repeating = true },
+		args = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume mute-toggle",
+		flags = { locked = false },
 	},
 }
 

@@ -7,6 +7,11 @@ CRITICAL=10
 notified_low=0
 notified_critical=0
 
+notify-send \
+    -a Battery \
+    "Battery notifier" \
+    "Battery notification service started."
+
 while sleep 120; do
     battery=$(<"$BAT/capacity")
     status=$(<"$BAT/status")

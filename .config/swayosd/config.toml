@@ -1,0 +1,10 @@
+[server]
+style              = "./style.css"
+top_margin         = 0.95
+max_volume         = 150
+min_brightness     = 5
+show_percentage    = true
+keyboard_backlight = false
+# playerctl_format = "{artist} - {title}"
+
+[client]
