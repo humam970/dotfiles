@@ -3,21 +3,19 @@
 
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-		stylix = {
-			url = "github:nix-community/stylix";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		# stylix = {
+		# 	url = "github:nix-community/stylix";
+		# 	inputs.nixpkgs.follows = "nixpkgs";
+		# };
 	};
 
   outputs = {
     nixpkgs,
-	stylix,
     ...
   } @ inputs: let
     system        = "x86_64-linux";
 	lib           = nixpkgs.lib;
 	commonModules = [
-		stylix.nixosModules.stylix
 		./configuration.nix
 	];
   in {

@@ -14,17 +14,23 @@
 	time.timeZone = "Asia/Baghdad";
 	i18n.defaultLocale = "en_US.UTF-8";
 
-	programs.fish.enable = true;
+	programs.nano.enable    = false;
+	programs.fish.enable    = true;
 
 	environment.systemPackages = with pkgs; [
 		mesa
-
 		# Extra Packages
+		base16-schemes
 		fishPlugins.pure
 		bibata-cursors
 		fastfetch
-		ashell
 		mako
+		swayosd
+		quickshell
+		adwaita-icon-theme
+		adwaita-fonts
+		adwaita-qt6
+		adwaita-qt
 
 		# Cli Packages
 		libnotify
@@ -38,6 +44,7 @@
 		git
 		openvpn3
 		eza
+		cloc
 
 		# Utility Packages
 		pwvucontrol
@@ -81,9 +88,6 @@
 	services.blueman.enable               = true;
 	services.upower.enable                = true;
 	services.power-profiles-daemon.enable = true;
-
-	# Remove Bloat
-	programs.nano.enable = false;
 
 	system.stateVersion = "26.05";
 }
