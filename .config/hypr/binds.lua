@@ -2,7 +2,23 @@ local dsp = hl.dsp
 local focus = hl.dsp.focus
 local window = hl.dsp.window
 
+local function reload_config(_)
+	return function()
+		hl.exec_cmd("hyprctl reload")
+		hl.notification.create({
+			text = "Config Reloaded",
+			timeout = 2500,
+			color = "#a00aff",
+			font_size = 14,
+		})
+	end
+end
+
 local binds = {
+	{
+		key = "SUPER + R",
+		fn = reload_config,
+	},
 	{
 		key = "SUPER + H",
 		fn = focus,
@@ -23,7 +39,6 @@ local binds = {
 		fn = focus,
 		args = { direction = "down" },
 	},
-
 	{
 		key = "SUPER + SHIFT + H",
 		fn = window.move,
@@ -44,7 +59,6 @@ local binds = {
 		fn = window.move,
 		args = { direction = "down" },
 	},
-
 	{
 		key = "SUPER + EQUAL",
 		fn = window.resize,
@@ -65,7 +79,6 @@ local binds = {
 		fn = window.resize,
 		args = { x = 0, y = -50 },
 	},
-
 	{
 		key = "SUPER + F",
 		fn = window.fullscreen,
@@ -101,40 +114,50 @@ local binds = {
 		args = "ashell msg toggle-visibility",
 	},
 
+	-- Brightness Binds
 	{
 		key = "XF86MonBrightnessUp",
 		fn = dsp.exec_cmd,
-		args = "brightnessctl set 5%+",
+		args = "ashell msg brightness-up",
+		-- args = "brightnessctl set 5%+",
 		flags = { locked = true, repeating = true },
 	},
 	{
 		key = "XF86MonBrightnessDown",
 		fn = dsp.exec_cmd,
-		args = "brightnessctl set 5%-",
+		args = "ashell msg brightness-down",
+		-- args = "brightnessctl set 5%-",
 		flags = { locked = true, repeating = true },
 	},
+
+	-- Volume Binds
 	{
 		key = "XF86AudioRaiseVolume",
 		fn = dsp.exec_cmd,
-		args = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+		args = "ashell msg volume-up",
+		-- args = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
 		flags = { locked = true, repeating = true },
 	},
 	{
 		key = "XF86AudioLowerVolume",
 		fn = dsp.exec_cmd,
-		args = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+		args = "ashell msg volume-down",
+		-- args = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
 		flags = { locked = true, repeating = true },
-	},
-	{
-		key = "XF86AudioMicMute",
-		fn = dsp.exec_cmd,
-		args = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-		flags = { repeating = true },
 	},
 	{
 		key = "XF86AudioMute",
 		fn = dsp.exec_cmd,
-		args = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		args = "ashell msg volume-toggle-mute",
+		-- args = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		flags = { repeating = true },
+	},
+
+	-- Microphone Binds
+	{
+		key = "XF86AudioMicMute",
+		fn = dsp.exec_cmd,
+		args = "ashell msg microphone-toggle-mute",
 		flags = { repeating = true },
 	},
 }

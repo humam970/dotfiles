@@ -17,11 +17,14 @@
 	programs.fish.enable = true;
 
 	environment.systemPackages = with pkgs; [
+		mesa
+
 		# Extra Packages
 		fishPlugins.pure
 		bibata-cursors
 		fastfetch
 		ashell
+		mako
 
 		# Cli Packages
 		libnotify
@@ -74,9 +77,10 @@
 		alejandra
 	];
 
-	hardware.bluetooth.enable = true;
-	services.blueman.enable   = true;
-	services.upower.enable    = true;
+	hardware.bluetooth.enable             = true;
+	services.blueman.enable               = true;
+	services.upower.enable                = true;
+	services.power-profiles-daemon.enable = true;
 
 	# Remove Bloat
 	programs.nano.enable = false;

@@ -69,13 +69,12 @@ hl.config({
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
 		middle_click_paste = false,
+		disable_autoreload = true,
 	},
 
 	ecosystem = {
 		no_donation_nag = true,
 	},
-
-	misce = {},
 })
 
 hl.gesture({

@@ -2,6 +2,8 @@ enable_esc_key = true
 position       = "Bottom"
 layer          = "Top"
 
+
+
 [osd]
 enabled                    = true
 timeout                    = 1500
@@ -9,19 +11,34 @@ show_volume_percentage     = true
 show_brightness_percentage = true
 
 
+
 [modules]
 left   = [ "Workspaces" ]
 center = [ "Tempo" ]
 right  = [ [ "Privacy", "Settings", "Notifications" ] ]
 
-# [notifications]
-# format = "%m/%d %H:%M"
-# show_timestamps = true
-# show_bodies = false
-# grouped = true
-# toast = true
-# toast_position = "top_right"
-# toast_timeout = 4000
-# toast_limit = 5
-# toast_max_height = 150
-# blocklist = ["blueman", "^org\\.gnome\\."]
+
+
+[appearance]
+font_name = "Liberation Mono Nerd Font"
+scale_factor = 1.25
+style = "Solid"
+
+opacity = 0.0
+menu.opacity = 1.0
+
+success_color = "#a6e3a1"
+warning_color = "#f9e2af"
+danger_color = "#f38ba8"
+text_color = "#cdd6f4"
+
+workspace_colors = [ "#fab387", "#b4befe", "#cba6f7" ]
+
+[appearance.primary_color]
+base = "#fab387"
+text = "#1e1e2e"
+
+[appearance.background_color]
+base = "#1e1e2e"
+weak = "#313244"
+strong = "#45475a"
